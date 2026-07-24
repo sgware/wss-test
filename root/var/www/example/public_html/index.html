@@ -1,0 +1,31 @@
+<html>
+	<head>
+		<title>WebSockets to Java via websockify</title>
+		<script>
+			const socket = new WebSocket("wss://localhost:9001");
+			socket.onopen = (event) => {
+				output = document.getElementById("output");
+				output.innerHTML += "Socket opened.\n";
+				var string = "I am a WebSocket!";
+				socket.send(string);
+				output.innerHTML += "Sent: " + string + "\n";
+			};
+			socket.onmessage = (event) => {
+				output = document.getElementById("output");
+				output.innerHTML += "Received: " + event.data + "\n";
+			};
+			socket.onerror = (error) => {
+				output = document.getElementById("output");
+				output.innerHTML += "Error: " + error + "\n";
+			};
+			socket.onclose = (event) => {
+				output = document.getElementById("output");
+				output.innerHTML += "Socket closed.\n";
+			};
+		</script>
+	</head>
+	<body>
+		<h1>WebSockets to Java via websockify</h1>
+		<pre id="output"></pre>
+	</body>
+</html>
