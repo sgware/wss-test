@@ -8,7 +8,8 @@ openssl req \
   -keyout /etc/ssl/private/example-ca.key \
   -out /etc/ssl/certs/example-chain.pem \
   -days 36500 \
-  -subj "/CN=localhost"
+  -subj "/CN=localhost" \
+  -addext "keyUsage=critical,digitalSignature,keyCertSign"
 
 # Generate the server's private key.
 openssl genrsa \
