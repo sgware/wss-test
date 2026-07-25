@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# Make Python trust the local Certificate Authority.
+SSL_CERT_FILE=/etc/ssl/certs/example-chain.pem
+
 # Use websockify to translate WebSockets on port 9001 to TLS on port 9000.
 websockify 9001 localhost:9000 \
   --daemon \
