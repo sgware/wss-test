@@ -6,7 +6,7 @@
 			socket.onopen = (event) => {
 				output = document.getElementById("output");
 				output.innerHTML += "Socket opened.\n";
-				var string = "I am a WebSocket!";
+				var string = "I am WebSocket!\n";
 				socket.send(string);
 				output.innerHTML += "Sent: " + string + "\n";
 			};

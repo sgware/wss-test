@@ -67,8 +67,13 @@ There are two test scripts for debugging which:
 ## Issues
 
 The WebSocket opens successfully and connects to the Java echo server, but an
-Exception is thrown after the TLS handshake:
+Exception is thrown. The Java server's output should look like this when you run
+the container:
 ```
+Java TLS echo server started.
+Java TLS echo server now listening on port 9000.
+A new client has connected.
+The client sent: "null".
 java.net.SocketException: Broken pipe
     at java.base/sun.nio.ch.SocketDispatcher.write0(Native Method)
     at java.base/sun.nio.ch.SocketDispatcher.write(SocketDispatcher.java:65)
@@ -86,5 +91,5 @@ java.net.SocketException: Broken pipe
     at java.base/sun.nio.cs.StreamEncoder.flush(StreamEncoder.java:150)
     at java.base/java.io.OutputStreamWriter.flush(OutputStreamWriter.java:249)
     at java.base/java.io.BufferedWriter.flush(BufferedWriter.java:306)
-    at EchoServer.main(EchoServer.java:23)
+    at EchoServer.main(EchoServer.java:24)
 ```

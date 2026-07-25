@@ -20,6 +20,7 @@ public class EchoServer {
 				String string = in.readLine();
 				System.out.println("The client sent: \"" + string + "\".");
 				out.append(string);
+				out.append("\n");
 				out.flush();
 				socket.close();
 				System.out.println("The client has been disconnected.");
