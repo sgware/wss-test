@@ -62,7 +62,7 @@ successful, it prints the response sent from the server. The web root
 as a volume so you can edit it outside the container.
 
 There are two test scripts for debugging which:
-- [Confirm SSL can connect to the echo server.](root/ssltest.sh)
+- [Confirm OpenSSL can connect to the echo server.](root/ssltest.sh)
 - [Confirm Python can connect to the echo server.](root/pytest.py)
 
 ## Issues
