@@ -67,8 +67,8 @@ There are two test scripts for debugging which:
 ## Issues
 
 The WebSocket opens successfully and connects to the Java echo server, but an
-Exception is thrown. The Java server's output should look like this when you run
-the container:
+Exception is thrown. The Java server's output should look like this after you
+run the container and visit [https://localhost](https://localhost).
 ```
 Java TLS echo server started.
 Java TLS echo server now listening on port 9000.
