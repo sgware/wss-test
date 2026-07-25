@@ -19,12 +19,11 @@ public class EchoServer {
 				System.out.println("A new client has connected.");
 				String string = in.readLine();
 				System.out.println("The client sent: \"" + string + "\".");
-				if(string == null)
-					out.append("Nothing received.");
-				else
+				if(string != null) {
 					out.append(string.trim());
-				out.append("\n");
-				out.flush();
+					out.append("\n");
+					out.flush();
+				}
 				socket.close();
 				System.out.println("The client has been disconnected.");
 			}

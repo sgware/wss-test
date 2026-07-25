@@ -2,25 +2,32 @@
 	<head>
 		<title>WebSockets to Java via websockify</title>
 		<script>
-			const socket = new WebSocket("wss://localhost:9001");
+			// Open a WebSocket. Websockify only supports binary frames.
+			const socket = new WebSocket("wss://localhost:9001", "binary");
+			socket.binaryType = "arraybuffer";
+			// When the WebSocket opens...
 			socket.onopen = (event) => {
 				output = document.getElementById("output");
 				output.innerHTML += "Socket opened.\n";
 				var string = "I am WebSocket!\n";
-				socket.send(string);
-				output.innerHTML += "Sent: " + string + "\n";
+				socket.send(new TextEncoder().encode(string));
+				output.innerHTML += "Sent: " + string.trim() + "\n";
 			};
+			// When the WebSocket receives a message...
 			socket.onmessage = (event) => {
 				output = document.getElementById("output");
-				output.innerHTML += "Received: " + event.data + "\n";
+				const message = new TextDecoder().decode(event.data);
+				output.innerHTML += "Received: " + message.trim() + "\n";
 			};
+			// If the WebSocket receives an error...
 			socket.onerror = (error) => {
 				output = document.getElementById("output");
 				output.innerHTML += "Error: " + error + "\n";
 			};
+			// When the WebSocket closes...
 			socket.onclose = (event) => {
 				output = document.getElementById("output");
-				output.innerHTML += "Socket closed.\n";
+				output.innerHTML += "Socket closed. Code: " + event.code + " Reason: \"" + event.reason + "\"";
 			};
 		</script>
 	</head>

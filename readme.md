@@ -1,9 +1,5 @@
 # WebSockets to Java via websockify
 
-> [!CAUTION]
-> This project is not currently working. It is offered as a minimal reproducible
-> example for debugging.
-
 This repository offers a minimal example of how to create a simple
 [Java](http://www.java.com) server application that accepts sockets using both
 [TLS](https://en.wikipedia.org/wiki/Transport_Layer_Security) and
@@ -55,41 +51,7 @@ websockify and writes its log to `/var/log/websockify.log`. It listens on port
 container starts.
 
 A simple [webpage](root/var/www/example/public_html/index.html) uses JavaScript
-to open a secure WebSocket on port 9001 and send a single message. If
-successful, it prints the response sent from the server. The web root
+to open a secure WebSocket on port 9001 and send a single message. It prints any
+messages it receives. The web root
 [`/var/www/example/public_html`](/var/www/example/public_html) is also mounted
 as a volume so you can edit it outside the container.
-
-There are two test scripts for debugging which:
-- [Confirm OpenSSL can connect to the echo server.](root/ssltest.sh)
-- [Confirm Python can connect to the echo server.](root/pytest.py)
-
-## Issues
-
-The WebSocket opens successfully and connects to the Java echo server, but an
-Exception is thrown. The Java server's output should look like this after you
-run the container and visit [https://localhost](https://localhost).
-```
-Java TLS echo server started.
-Java TLS echo server now listening on port 9000.
-A new client has connected.
-The client sent: "null".
-java.net.SocketException: Broken pipe
-    at java.base/sun.nio.ch.SocketDispatcher.write0(Native Method)
-    at java.base/sun.nio.ch.SocketDispatcher.write(SocketDispatcher.java:65)
-    at java.base/sun.nio.ch.NioSocketImpl.tryWrite(NioSocketImpl.java:402)
-    at java.base/sun.nio.ch.NioSocketImpl.implWrite(NioSocketImpl.java:418)
-    at java.base/sun.nio.ch.NioSocketImpl.write(NioSocketImpl.java:448)
-    at java.base/sun.nio.ch.NioSocketImpl$2.write(NioSocketImpl.java:821)
-    at java.base/java.net.Socket$SocketOutputStream.implWrite(Socket.java:1086)
-    at java.base/java.net.Socket$SocketOutputStream.write(Socket.java:1076)
-    at java.base/sun.security.ssl.SSLSocketOutputRecord.deliver(SSLSocketOutputRecord.java:345)
-    at java.base/sun.security.ssl.SSLSocketImpl$AppOutputStream.write(SSLSocketImpl.java:1306)
-    at java.base/sun.nio.cs.StreamEncoder.writeBytes(StreamEncoder.java:220)
-    at java.base/sun.nio.cs.StreamEncoder.implFlushBuffer(StreamEncoder.java:315)
-    at java.base/sun.nio.cs.StreamEncoder.implFlush(StreamEncoder.java:320)
-    at java.base/sun.nio.cs.StreamEncoder.flush(StreamEncoder.java:150)
-    at java.base/java.io.OutputStreamWriter.flush(OutputStreamWriter.java:249)
-    at java.base/java.io.BufferedWriter.flush(BufferedWriter.java:306)
-    at EchoServer.main(EchoServer.java:24)
-```
