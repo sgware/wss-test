@@ -10,6 +10,5 @@ websockify 9001 localhost:9000 \
   --log-file /var/log/websockify.log \
   --ssl-target \
   --ssl-only \
-  --cafile=/etc/ssl/certs/example-fullchain.pem \
   --cert=/etc/ssl/certs/example-public.pem \
   --key=/etc/ssl/private/example-private.pem

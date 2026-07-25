@@ -10,10 +10,14 @@ COPY root /
 
 # Generate a new self-signed public private key pair.
 RUN ./self_sign.sh
+# Add the newly generated Certificate Authority to the system CAs.
+RUN cp /etc/ssl/certs/example-chain.pem /usr/local/share/ca-certificates/example-ca.crt
+RUN update-ca-certificates
 # Import the keys into a Java keystore.
 WORKDIR /opt/echo
 RUN rm -f keystore.p12
 RUN ./keystore.sh
+
 # Compile the Java server.
 RUN rm -f EchoServer.class
 RUN ./compile.sh
