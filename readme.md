@@ -103,3 +103,10 @@ java.net.SocketException: Broken pipe
   at java.base/java.io.BufferedReader.readLine(BufferedReader.java:400)
   at EchoServer.main(EchoServer.java:20)
 ```
+
+You can verify the Java server is accepting TLS sockets by opening a terminal,
+navigating to this image's directory, and running:
+```
+docker compose exec server bash
+openssl s_client -connect localhost:9000 -CAfile /etc/ssl/certs/example-public.pem
+```
