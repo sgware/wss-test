@@ -61,6 +61,10 @@ successful, it prints the response sent from the server. The web root
 [`/var/www/example/public_html`](/var/www/example/public_html) is also mounted
 as a volume so you can edit it outside the container.
 
+There are two test scripts for debugging which:
+- [Confirm SSL can connect to the echo server.](root/ssltest.sh)
+- [Confirm Python can connect to the echo server.](root/pytest.py)
+
 ## Issues
 
 The WebSocket opens successfully and connects to the Java echo server, but an
@@ -103,12 +107,3 @@ java.net.SocketException: Broken pipe
   at java.base/java.io.BufferedReader.readLine(BufferedReader.java:400)
   at EchoServer.main(EchoServer.java:20)
 ```
-
-You can verify the Java server is accepting standard TLS sockets correctly by
-opening a terminal, navigating to this image's directory, and running:
-```
-docker compose exec server bash
-openssl s_client -connect localhost:9000 -CAfile /etc/ssl/certs/example-public.pem
-```
-Then type anything and press enter. The same message should be sent back, and
-then the socket will be closed.
