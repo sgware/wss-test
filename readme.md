@@ -41,7 +41,7 @@ The [Java echo server](root/opt/echo/src/EchoServer.java) can be found in
 sends back the first message sent to each socket. It also prints the stack trace
 of any exceptions that are thrown. The `src` directory is mounted as a volume so
 you can edit it from outside the container. From inside the container, there is
-a shell scripts to [compile](root/opt/echo/compile.sh) it which runs during the
+a shell script to [compile](root/opt/echo/compile.sh) it which runs during the
 build. There is a shell script to [run](root/opt/echo/run.sh) it which runs when
 the container starts.
 
