@@ -1,15 +1,14 @@
 # WebSockets to Java via websockify
 
+> [!CAUTION]
+> This project is not currently working. It is offered as a minimal reproducible
+> example for debugging.
+
 This repository offers a minimal example of how to create a simple
 [Java](http://www.java.com) server application that accepts sockets using both
 [TLS](https://en.wikipedia.org/wiki/Transport_Layer_Security) and
 [WebSockets](https://en.wikipedia.org/wiki/WebSocket) via
 [websockify](https://github.com/novnc/websockify).
-
-## Status
-
-This project is not currently working. It is offered as a minimal reproducible
-example for debugging.
 
 ## Download, Build, and Run
 
