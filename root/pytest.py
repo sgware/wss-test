@@ -2,6 +2,7 @@ import os
 import ssl
 import socket
 
+# Confirm Python can connect to the Java echo server.
 os.environ['SSL_CERT_FILE'] = '/etc/ssl/certs/example-chain.pem'
 try:
     context = ssl.create_default_context()
